@@ -102,8 +102,8 @@ class NimAI():
         If no Q-value exists yet in `self.q`, return 0.
         """
         
-        if zip(tuple(state), action) in self.q:
-            return self.q[zip(tuple(state), action)]
+        if (tuple(state), action) in self.q:
+            return self.q[(tuple(state), action)]
         else:
             return 0
             
@@ -138,7 +138,7 @@ class NimAI():
         rewards = list()
 
         for action in Nim.available_actions(state):
-            if zip(tuple(state), action) in self.q:
+            if (tuple(state), action) in self.q:
                 rewards.append(self.get_q_value(state, action))
             else:
                 rewards.append(0)
